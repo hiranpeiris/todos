@@ -29,7 +29,6 @@ class App extends Component {
   };
 
   markComplete = todo => {
-    console.log(todo);
     this.setState(previousSate => {
       return {
         todos: previousSate.todos.map(t => {
@@ -43,12 +42,24 @@ class App extends Component {
     });
   };
 
+  onDelete = todo => {
+    this.setState(previousSate => {
+      return {
+        todos: previousSate.todos.filter(t => t.id !== todo.id)
+      };
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Todos List</h1>
         <br></br>
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+        <Todos
+          todos={this.state.todos}
+          markComplete={this.markComplete}
+          onDelete={this.onDelete}
+        />
       </div>
     );
   }

@@ -3,16 +3,19 @@ import PropTypes from "prop-types";
 
 class TodoItem extends Component {
   render() {
+    const { title, completed } = this.props.todo;
+
     return (
       <div
         style={{
           ...styles.todo,
-          textDecoration: this.props.todo.completed ? "line-through" : "none"
+          textDecoration: completed ? "line-through" : "none"
         }}
       >
         <p>
           <input style={styles.checkbox} type="checkbox" onChange={this.props.markComplete}/>
-          {this.props.todo.title}
+          {title}
+          <img style={styles.delete} src={require('../assets/deletebutton.png')} onClick={this.props.onDelete}/>
         </p>
       </div>
     );
@@ -32,6 +35,12 @@ const styles = {
   },
   checkbox: {
     marginRight: "5px"
+  },
+  delete: {
+    width: "20px",
+    height: "20px",
+    float: "right",
+    cursor: "pointer"
   }
 };
 
