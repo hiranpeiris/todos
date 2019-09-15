@@ -10,7 +10,10 @@ class TodoItem extends Component {
           textDecoration: this.props.todo.completed ? "line-through" : "none"
         }}
       >
-        <p>{this.props.todo.title}</p>
+        <p>
+          <input style={styles.checkbox} type="checkbox" onChange={this.props.markComplete}/>
+          {this.props.todo.title}
+        </p>
       </div>
     );
   }
@@ -26,6 +29,9 @@ const styles = {
     background: "#f4f4f4",
     padding: "10px",
     borderBottom: "1px #ccc dotted"
+  },
+  checkbox: {
+    marginRight: "5px"
   }
 };
 

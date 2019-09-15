@@ -18,7 +18,7 @@ class App extends Component {
       {
         id: 3,
         title: "Install Warframe",
-        completed: true
+        completed: false
       },
       {
         id: 4,
@@ -28,12 +28,27 @@ class App extends Component {
     ]
   };
 
+  markComplete = todo => {
+    console.log(todo);
+    this.setState(previousSate => {
+      return {
+        todos: previousSate.todos.map(t => {
+          if (t.id === todo.id) {
+            return { ...todo, completed: !todo.completed };
+          } else {
+            return t;
+          }
+        })
+      };
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Todos List</h1>
         <br></br>
-        <Todos todos={this.state.todos}/>
+        <Todos todos={this.state.todos} markComplete={this.markComplete} />
       </div>
     );
   }
