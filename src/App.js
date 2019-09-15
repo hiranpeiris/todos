@@ -18,7 +18,7 @@ class App extends Component {
       {
         id: 3,
         title: "Install Warframe",
-        completed: false
+        completed: true
       },
       {
         id: 4,
@@ -33,7 +33,7 @@ class App extends Component {
       <div className="App">
         <h1>Todos List</h1>
         <br></br>
-        <Todos todos={this.state.todos} />
+        <Todos todos={this.state.todos}/>
       </div>
     );
   }
