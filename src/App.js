@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/header";
 import Todos from "./components/Todos";
+import AddTodo from "./components/AddTodo";
 
 class App extends Component {
   state = {
@@ -43,6 +44,14 @@ class App extends Component {
     });
   };
 
+  addTodo = todo => {
+    this.setState(previousSate => {
+      return {
+        todos: [...previousSate.todos, todo]
+      };
+    });
+  };
+
   onDelete = todo => {
     this.setState(previousSate => {
       return {
@@ -54,8 +63,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header/>
-        <br></br>
+        <Header />
+        <AddTodo addTodo={this.addTodo} />
         <Todos
           todos={this.state.todos}
           markComplete={this.markComplete}
